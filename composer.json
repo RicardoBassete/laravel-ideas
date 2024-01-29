@@ -36,7 +36,7 @@
     "scripts": {
         "post-install-cmd": [
             "php artisan ide-helper:generate",
-            "php artisan ide-helper:models"
+            "php artisan ide-helper:models -N"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
