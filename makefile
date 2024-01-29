@@ -9,9 +9,6 @@ node_modules: package.json
 vendor: composer.json
 	composer install
 
-migrate:
-	php artisan migrate
-
 ide-helper: vendor
 	composer run post-install-cmd
 
