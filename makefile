@@ -9,9 +9,6 @@ node_modules: package.json
 vendor: composer.json
 	composer install
 
-ide-helper: vendor
-	composer run post-install-cmd
-
 clear:
 	rm -rf node_modules
 	rm -rf vendor
