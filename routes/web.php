@@ -20,4 +20,4 @@ Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/terms', function(){ return view('terms'); })->name('terms');
 
 
-Route::post('/idea', [IdeaController::class, 'store'])->name('idea.store');
+Route::post('/ideas', [IdeaController::class, 'store'])->name('ideas.store');
