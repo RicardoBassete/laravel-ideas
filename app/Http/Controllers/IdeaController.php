@@ -10,6 +10,6 @@ class IdeaController extends Controller
   public function store(Request $request) {
 		$idea = new Idea(['content' => $request->get('idea')]);
 		$idea->save();
-		return redirect()->route('home');
+		return redirect()->route('dashboard');
 	}
 }
