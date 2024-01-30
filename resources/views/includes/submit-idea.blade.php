@@ -2,7 +2,7 @@
 <div class="row">
   <form action="{{route('ideas.store')}}" method="post">
 		<div class="mb-3">
-			<textarea class="form-control" id="idea" name="idea" rows="3"></textarea>
+			<textarea class="form-control" name="content" rows="3"></textarea>
 			@error('idea')
 				<span class="d-block fs-6 text-danger mt-2">{{$message}}</span>
 			@enderror
