@@ -11,6 +11,11 @@
       </div>
 			<div>
 				<form action="{{ route('ideas.destroy', ['id'=>$idea->id]) }}" method="POST">
+
+					@if (Route::is('dashboard'))
+						<a class="btn btn-info btn-sm ms-2" href="{{ route('ideas.show', [$idea->id]) }}">View</a>
+					@endif
+
 					<button class="btn btn-danger btn-sm"> Delete </button>
 					@method('delete')
 					@csrf

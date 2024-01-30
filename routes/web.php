@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/terms', function(){ return view('terms'); })->name('terms');
-
+Route::get('/ideas/{id}', [IdeaController::class, 'show'])->name('ideas.show');
 
 Route::post('/ideas', [IdeaController::class, 'store'])->name('ideas.store');
 
