@@ -39,6 +39,7 @@
     </div>
     <div class="col-6">
 
+			@include('includes.success-message')
 			@include('includes.submit-idea')
 
       <hr>
