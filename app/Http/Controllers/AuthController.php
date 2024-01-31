@@ -3,17 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-	public function index() {
-		return view('auth.register');
+	public function login() {
+		return view('auth.login');
 	}
 
-	public function create() {
 
+	public function authenticate() {
+
+		$validated = request()->validate([
+			'email' => 'required|email',
+			'password' => 'required|min:8',
+		]);
+
+		if(Auth::attempt($validated)) {
+			request()->session()->regenerate();
+
+			return redirect()->route('dashboard')->with('success', 'Logged in successfully!');
+		}
+
+		return redirect()->route('login')->withErrors([
+			'email' => 'No matching user found with the provided email and password'
+		]);
+	}
+
+	public function register() {
+		return view('auth.register');
 	}
 
 	public function store(Request $request) {
@@ -32,20 +52,12 @@ class AuthController extends Controller
 		return redirect()->route('dashboard')->with('success', 'User created successfully!');
 	}
 
-	public function show() {
+	public function logout() {
+		Auth::logout();
+		request()->session()->invalidate();
+		request()->session()->regenerateToken();
 
-	}
-
-	public function edit() {
-
-	}
-
-	public function update() {
-
-	}
-
-	public function destroy() {
-
+		return redirect()->route('dashboard')->with('success', 'Logged out successfully!');
 	}
 
 }

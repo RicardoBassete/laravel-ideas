@@ -30,5 +30,10 @@ Route::delete('/ideas/{id}', 				[IdeaController::class, 'destroy'])->name('idea
 
 Route::post('/ideas/{id}/comments', [CommentController::class, 'store'])->name('comments.store');
 
-Route::get('/register', 						[AuthController::class, 'index'])->name('register');
+Route::get('/register', 						[AuthController::class, 'register'])->name('register');
 Route::post('/register', 						[AuthController::class, 'store'])->name('register.store');
+
+Route::get('/login', 								[AuthController::class, 'login'])->name('login');
+Route::post('/login', 							[AuthController::class, 'authenticate'])->name('login.authenticate');
+Route::post('/logout', 							[AuthController::class, 'logout'])->name('login.logout');
+
