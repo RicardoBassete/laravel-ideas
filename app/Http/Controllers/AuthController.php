@@ -26,7 +26,7 @@ class AuthController extends Controller
 		User::create([
 			'name' => $validated['name'],
 			'email' => $validated['email'],
-			'password' => Hash::make($validated['name']),
+			'password' => Hash::make($validated['password']),
 		]);
 
 		return redirect()->route('dashboard')->with('success', 'User created successfully!');
