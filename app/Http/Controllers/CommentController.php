@@ -4,18 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Idea;
+use Auth;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-	public function index() {
-
-	}
-
-	public function create() {
-
-	}
-
 	public function store($id) {
 
 		request()->validate([
@@ -24,26 +17,11 @@ class CommentController extends Controller
 
 		$comment = new Comment([
 			'content' => request()->get('content'),
-			'idea_id' => $id
+			'idea_id' => $id,
+			'user_id' => Auth::user()->id,
 		]);
 		$comment->save();
 
 		return redirect()->route('ideas.show', $id)->with('success', 'Comment posted successfully!');
-	}
-
-	public function show() {
-
-	}
-
-	public function edit() {
-
-	}
-
-	public function update() {
-
-	}
-
-	public function destroy() {
-
 	}
 }

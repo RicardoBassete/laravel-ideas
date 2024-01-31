@@ -23,12 +23,12 @@ Route::get('/', 										[DashboardController::class, 'index'])->name('dashboar
 Route::get('/terms', 								function(){ return view('terms'); })->name('terms');
 
 Route::get('/ideas/{id}', 					[IdeaController::class, 'show'])->name('ideas.show');
-Route::get('/ideas/{id}/edit', 			[IdeaController::class, 'edit'])->name('ideas.edit');
-Route::post('/ideas', 							[IdeaController::class, 'store'])->name('ideas.store');
-Route::put('/ideas/{id}', 					[IdeaController::class, 'update'])->name('ideas.update');
-Route::delete('/ideas/{id}', 				[IdeaController::class, 'destroy'])->name('ideas.destroy');
+Route::get('/ideas/{id}/edit', 			[IdeaController::class, 'edit'])->name('ideas.edit')->middleware('auth');
+Route::post('/ideas', 							[IdeaController::class, 'store'])->name('ideas.store')->middleware('auth');
+Route::put('/ideas/{id}', 					[IdeaController::class, 'update'])->name('ideas.update')->middleware('auth');
+Route::delete('/ideas/{id}', 				[IdeaController::class, 'destroy'])->name('ideas.destroy')->middleware('auth');
 
-Route::post('/ideas/{id}/comments', [CommentController::class, 'store'])->name('comments.store');
+Route::post('/ideas/{id}/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
 
 Route::get('/register', 						[AuthController::class, 'register'])->name('register');
 Route::post('/register', 						[AuthController::class, 'store'])->name('register.store');
