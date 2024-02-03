@@ -12,14 +12,16 @@
 
       <hr>
 
-			@foreach ($ideas as $idea)
+			@forelse ($ideas as $idea)
 				<div class="mt-3">
 					@include('includes.idea-card')
 				</div>
-			@endforeach
+			@empty
+				<p class="text-center mt-4">No Results Found.</p>
+			@endforelse
 
 			<div class="mt-3">
-				{{$ideas->links()}}
+				{{$ideas->withQueryString()->links()}}
 			</div>
 
     </div>
