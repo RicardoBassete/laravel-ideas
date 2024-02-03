@@ -20,7 +20,11 @@
         src="https://api.dicebear.com/6.x/fun-emoji/svg?seed={{ $comment->user->name }}" alt="{{ $comment->user->name }}">
       <div class="w-100">
         <div class="d-flex justify-content-between">
-          <h6 class="">{{ $comment->user->name }}</h6>
+          <h6 class="">
+						<a href="{{route('users.show', $comment->user->id)}}">
+							{{ $comment->user->name }}
+						</a>
+					</h6>
           <small class="fs-6 fw-light text-muted">{{ $comment->created_at }}</small>
         </div>
         <p class="fs-6 mt-3 fw-light">

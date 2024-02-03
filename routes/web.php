@@ -29,6 +29,7 @@ Route::delete('/ideas/{id}', 				[IdeaController::class, 'destroy']		)->name('id
 
 Route::post('/ideas/{id}/comments', [CommentController::class, 'store']		)->name('comments.store')->middleware('auth');
 
+Route::get('/profile', 							[UserController::class, 'profile']		)->name('profile')->middleware('auth');
 Route::get('/users/{id}', 					[UserController::class, 'show']				)->name('users.show')->middleware('auth');
 Route::get('/users/{id}/edit', 			[UserController::class, 'edit']				)->name('users.edit')->middleware('auth');
 Route::put('/users/{id}', 					[UserController::class, 'update']			)->name('users.update')->middleware('auth');
