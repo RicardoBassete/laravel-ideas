@@ -15,7 +15,7 @@ vendor: composer.json
 	php artisan key:generate --ansi
 
 ide-helper: vendor
-	php artisan ide-helper:generate,
+	php artisan ide-helper:generate
 	php artisan ide-helper:models -N
 
 clear:
