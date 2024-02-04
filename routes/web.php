@@ -17,19 +17,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 										[DashboardController::class, 'index']	)->name('dashboard');
+Route::get('/', 											[DashboardController::class, 'index']	)->name('dashboard');
 
-Route::get('/terms', 								function(){ return view('terms'); }		)->name('terms');
+Route::get('/terms', 									function(){ return view('terms'); }		)->name('terms');
 
-Route::get('/ideas/{id}', 					[IdeaController::class, 'show']				)->name('ideas.show');
-Route::get('/ideas/{id}/edit', 			[IdeaController::class, 'edit']				)->name('ideas.edit')->middleware('auth');
-Route::post('/ideas', 							[IdeaController::class, 'store']			)->name('ideas.store')->middleware('auth');
-Route::put('/ideas/{id}', 					[IdeaController::class, 'update']			)->name('ideas.update')->middleware('auth');
-Route::delete('/ideas/{id}', 				[IdeaController::class, 'destroy']		)->name('ideas.destroy')->middleware('auth');
+Route::get('/ideas/{id}', 						[IdeaController::class, 'show']				)->name('ideas.show');
+Route::get('/ideas/{id}/edit', 				[IdeaController::class, 'edit']				)->name('ideas.edit')->middleware('auth');
+Route::post('/ideas', 								[IdeaController::class, 'store']			)->name('ideas.store')->middleware('auth');
+Route::put('/ideas/{id}', 						[IdeaController::class, 'update']			)->name('ideas.update')->middleware('auth');
+Route::delete('/ideas/{id}', 					[IdeaController::class, 'destroy']		)->name('ideas.destroy')->middleware('auth');
 
-Route::post('/ideas/{id}/comments', [CommentController::class, 'store']		)->name('comments.store')->middleware('auth');
+Route::post('/ideas/{id}/comments', 	[CommentController::class, 'store']		)->name('comments.store')->middleware('auth');
 
-Route::get('/profile', 							[UserController::class, 'profile']		)->name('profile')->middleware('auth');
-Route::get('/users/{id}', 					[UserController::class, 'show']				)->name('users.show')->middleware('auth');
-Route::get('/users/{id}/edit', 			[UserController::class, 'edit']				)->name('users.edit')->middleware('auth');
-Route::put('/users/{id}', 					[UserController::class, 'update']			)->name('users.update')->middleware('auth');
+Route::get('/profile', 								[UserController::class, 'profile']		)->name('profile')->middleware('auth');
+Route::get('/users/{id}', 						[UserController::class, 'show']				)->name('users.show')->middleware('auth');
+Route::get('/users/{id}/edit', 				[UserController::class, 'edit']				)->name('users.edit')->middleware('auth');
+Route::put('/users/{id}', 						[UserController::class, 'update']			)->name('users.update')->middleware('auth');
+
+Route::post('/users/{id}/follow',			[UserController::class, 'follow']			)->name('users.follow')->middleware('auth');
+Route::delete('/users/{id}/unfollow',	[UserController::class, 'unfollow']		)->name('users.unfollow')->middleware('auth');

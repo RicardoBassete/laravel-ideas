@@ -48,4 +48,21 @@ class UserController extends Controller
 
 	}
 
+	public function follow(string $id) {
+		$currentUser = Auth::user();
+
+		$currentUser->followings()->attach($id);
+
+		return redirect()->route('users.show', $id)->with('success', 'Followed Successfully!');
+
+	}
+
+	public function unfollow(string $id) {
+		$currentUser = Auth::user();
+
+		$currentUser->followings()->detach($id);
+
+		return redirect()->route('users.show', $id)->with('success', 'Unfollowed Successfully!');
+	}
+
 }
