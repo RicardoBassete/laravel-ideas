@@ -10,7 +10,7 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
-        @guest()
+        @guest
           <li class="nav-item">
             <a class="nav-link {{ Route::is('login') ? 'active' : '' }}" aria-current="page"
               href="{{ route('login') }}">Login</a>
@@ -19,7 +19,7 @@
             <a class="nav-link {{ Route::is('register') ? 'active' : '' }}" href="{{ route('register') }}">Register</a>
           </li>
         @endguest
-        @auth()
+        @auth
           <li class="nav-item">
             <a class="nav-link active" href="{{ route('profile') }}">{{ Auth::user()->name }}</a>
           </li>
