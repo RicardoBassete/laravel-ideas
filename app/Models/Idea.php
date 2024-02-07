@@ -15,6 +15,11 @@ class Idea extends Model
 			'user_id',
 		];
 
+		protected $with = [
+			'user',
+			'comments.user'
+		];
+
 		public function comments() {
 			return $this->hasMany(Comment::class);
 		}
