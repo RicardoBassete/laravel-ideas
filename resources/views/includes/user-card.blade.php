@@ -11,9 +11,11 @@
       </div>
 			<div class="d-flex flex-column align-items-end h-100">
 				@auth
-					<div>
-						<a class="btn btn-info btn-sm" href="{{route('users.edit', $user->id)}}">Edit</a>
-					</div>
+					@if(Auth::id() === $user->id)
+						<div>
+							<a class="btn btn-info btn-sm" href="{{route('users.edit', $user->id)}}">Edit</a>
+						</div>
+					@endif
 				@endauth
 			</div>
     </div>
