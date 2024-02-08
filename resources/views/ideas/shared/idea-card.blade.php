@@ -60,7 +60,7 @@
       </div>
     </div>
 
-		@include('includes.comments-box')
+		@include('ideas.shared.comments-box')
 
   </div>
 </div>
