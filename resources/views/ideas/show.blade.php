@@ -10,7 +10,7 @@
 			@include('includes.success-message')
 
 			<div class="mt-3">
-				@include('includes.idea-card')
+				@include('ideas.shared.idea-card')
 			</div>
 
 
