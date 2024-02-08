@@ -13,15 +13,15 @@
       <div>
         <form action="{{ route('ideas.destroy', ['id' => $idea->id]) }}" method="POST">
 
-          @if (Route::is('dashboard'))
+          @if (!Route::is('ideas.show'))
             <a class="btn btn-success btn-sm" href="{{ route('ideas.show', [$idea->id]) }}">View</a>
           @endif
 
-          @if (!Route::is('ideas.edit') && Auth::hasUser() && Auth::user()->id == $idea->user_id)
+          @if (!Route::is('ideas.edit') && Auth::user() && Auth::user()->id == $idea->user_id)
             <a class="btn btn-info btn-sm" href="{{ route('ideas.edit', [$idea->id]) }}">Edit</a>
           @endif
 
-          @if (Auth::hasUser() && Auth::user()->id == $idea->user_id)
+          @if (Auth::user() && Auth::user()->id == $idea->user_id)
             <button class="btn btn-danger btn-sm"> Delete </button>
           @endif
           @method('delete')
@@ -31,7 +31,7 @@
     </div>
   </div>
   <div class="card-body">
-    @if ($editing ?? false)
+    @if ( Route::is('ideas.edit') )
       <form action="{{ route('ideas.update', [$idea->id]) }}" method="post">
         <div class="mb-3">
           <textarea class="form-control" name="content" rows="3">{{ $idea->content }}</textarea>
