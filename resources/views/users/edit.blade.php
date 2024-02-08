@@ -10,7 +10,7 @@
 			@include('includes.success-message')
 
 			<div class="mt-3">
-				@include('includes.user-edit-card')
+				@include('users.shared.user-edit-card')
 			</div>
 
 			@forelse ($ideas as $idea)

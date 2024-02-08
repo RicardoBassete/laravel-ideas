@@ -40,7 +40,7 @@
 
         <button class="btn btn-info btn-sm mb-3">Save</button>
 
-        @include('includes.user-stats')
+        @include('users.shared.user-stats')
 
       </div>
     </form>
