@@ -4,9 +4,11 @@ run: install
 install: vendor node_modules .env
 
 node_modules: package.json
+	rm -rf node_modules
 	npm install
 
 vendor: composer.json
+	rm -rf vendor
 	composer install
 
 .env:
