@@ -17,11 +17,11 @@
             <a class="btn btn-success btn-sm" href="{{ route('ideas.show', [$idea->id]) }}">View</a>
           @endif
 
-          @if (!Route::is('ideas.edit') && Auth::hasUser() && Auth::user()->id === $idea->user_id)
+          @if (!Route::is('ideas.edit') && Auth::hasUser() && Auth::user()->id == $idea->user_id)
             <a class="btn btn-info btn-sm" href="{{ route('ideas.edit', [$idea->id]) }}">Edit</a>
           @endif
 
-          @if (Auth::hasUser() && Auth::user()->id === $idea->user_id)
+          @if (Auth::hasUser() && Auth::user()->id == $idea->user_id)
             <button class="btn btn-danger btn-sm"> Delete </button>
           @endif
           @method('delete')
