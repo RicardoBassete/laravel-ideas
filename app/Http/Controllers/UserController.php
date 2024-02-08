@@ -21,7 +21,7 @@ class UserController extends Controller
 	}
 
 	public function edit(string $id) {
-		if(Auth::user()->id === $id) {
+		if(Auth::user()->id == $id) {
 			$user = User::find($id);
 			$ideas = $user->ideas()->paginate(5);
 
