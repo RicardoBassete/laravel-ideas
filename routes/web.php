@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IdeaController;
+use App\Http\Controllers\IdeaLikeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,3 +37,7 @@ Route::put('/users/{id}', 						[UserController::class, 'update']			)->name('use
 
 Route::post('/users/{id}/follow',			[UserController::class, 'follow']			)->name('users.follow')->middleware('auth');
 Route::delete('/users/{id}/unfollow',	[UserController::class, 'unfollow']		)->name('users.unfollow')->middleware('auth');
+
+
+Route::post('/ideas/{id}/like',				[IdeaLikeController::class, 'like']		)->name('ideas.like')->middleware('auth');
+Route::delete('/ideas/{id}/unlike',		[IdeaLikeController::class, 'unlike']	)->name('ideas.unlike')->middleware('auth');

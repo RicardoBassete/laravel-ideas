@@ -65,6 +65,11 @@ class User extends Authenticatable
 			return $this->belongsToMany(User::class, 'follower_user', 'user_id', 'follower_id')->withTimestamps();
 		}
 
+
+		public function likes() {
+			return $this->belongsToMany(Idea::class, 'idea_like')->withTimestamps();
+		}
+
 		public function getImageURL() {
 			if($this->image) {
 				return url('storage/'.$this->image);
