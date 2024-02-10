@@ -20,6 +20,9 @@
           </li>
         @endguest
         @auth
+					@if (Auth::user()->is_admin && !Route::is('admin.dashboard'))
+						<a class="nav-link" href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+					@endif
           <li class="nav-item">
             <a class="nav-link active" href="{{ route('profile') }}">{{ Auth::user()->name }}</a>
           </li>
