@@ -20,11 +20,15 @@
           </li>
         @endguest
         @auth
-					@if (Auth::user()->is_admin && !Route::is('admin.dashboard'))
-						<a class="nav-link" href="{{ route('admin.dashboard') }}">Admin Dashboard</a>
+					@if (Auth::user()->is_admin)
+						<a class="nav-link {{ Route::is('admin.dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">
+							Admin Dashboard
+						</a>
 					@endif
           <li class="nav-item">
-            <a class="nav-link active" href="{{ route('profile') }}">{{ Auth::user()->name }}</a>
+            <a class="nav-link {{ Route::is('profile') ? 'active' : '' }}" href="{{ route('profile') }}">
+							{{ Auth::user()->name }}
+						</a>
           </li>
           <li class="nav-item">
 						<form action="{{route('login.logout')}}" method="POST">
