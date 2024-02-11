@@ -17,13 +17,16 @@
             <a class="btn btn-success btn-sm" href="{{ route('ideas.show', [$idea->id]) }}">View</a>
           @endif
 
-          @if (!Route::is('ideas.edit') && Auth::user() && Auth::user()->id == $idea->user_id)
-            <a class="btn btn-info btn-sm" href="{{ route('ideas.edit', [$idea->id]) }}">Edit</a>
-          @endif
+					@can('idea.edit', $idea)
+						@if (!Route::is('ideas.edit'))
+							<a class="btn btn-info btn-sm" href="{{ route('ideas.edit', [$idea->id]) }}">Edit</a>
+						@endif
+					@endcan
 
-          @if (Auth::user() && Auth::user()->id == $idea->user_id)
-            <button class="btn btn-danger btn-sm"> Delete </button>
-          @endif
+					@can('idea.delete', $idea)
+						<button class="btn btn-danger btn-sm"> Delete </button>
+					@endcan
+
           @method('delete')
           @csrf
         </form>

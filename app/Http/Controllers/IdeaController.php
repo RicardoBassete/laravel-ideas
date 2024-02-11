@@ -23,10 +23,7 @@ class IdeaController extends Controller
 
 	public function destroy($id) {
 		$idea = Idea::findOrFail($id);
-
-		if(Auth::user()->id !== $idea->user_id) {
-			abort(404);
-		}
+		$this->authorize('idea.delete', $idea);
 
 		$idea->delete();
 
@@ -35,28 +32,20 @@ class IdeaController extends Controller
 
 	public function show($id) {
 		$idea = Idea::find($id);
-		$editing = false;
 
-		return view('ideas.show', compact('idea', 'editing'));
+		return view('ideas.show', compact('idea'));
 	}
 
 	public function edit($id) {
 		$idea = Idea::find($id);
-		$editing = true;
+		$this->authorize('idea.edit', $idea);
 
-		if(Auth::user()->id !== $idea->user_id) {
-			abort(404);
-		}
-
-		return view('ideas.show', compact('idea', 'editing'));
+		return view('ideas.show', compact('idea'));
 	}
 
 	public function update($id) {
 		$idea = Idea::find($id);
-
-		if(Auth::user()->id !== $idea->user_id) {
-			abort(404);
-		}
+		$this->authorize('idea.edit', $idea);
 
 		$validated = request()->validate([
 			'content' => 'required|min:3|max:240'
