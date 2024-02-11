@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Mail;
 class AuthController extends Controller
 {
 	public function login() {
+
+		if(Auth::user()) {
+			return redirect()->route('dashboard');
+		}
+
 		return view('auth.login');
 	}
 
