@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateCommentRequest;
 use App\Models\Comment;
 use App\Models\Idea;
 use Auth;
@@ -9,18 +10,14 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-	public function store($id) {
+	public function store($id, CreateCommentRequest $request) {
 
-		request()->validate([
-			'content' => 'required|min:3|max:240'
-		]);
+		$validated = $request->validated();
 
-		$comment = new Comment([
-			'content' => request()->get('content'),
-			'idea_id' => $id,
-			'user_id' => Auth::user()->id,
-		]);
-		$comment->save();
+		$validated['idea_id'] = $id;
+		$validated['user_id'] = Auth::user()->id;
+
+		Comment::create($validated);
 
 		return redirect()->route('ideas.show', $id)->with('success', 'Comment posted successfully!');
 	}
