@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
@@ -29,18 +30,14 @@ class UserController extends Controller
 		return view('users.edit', compact('user', 'ideas'));
 	}
 
-	public function update(string $id) {
+	public function update(string $id, UpdateUserRequest $request) {
 		$user = User::find($id);
 		$this->authorize('update', $user);
 
-		$validated = request()->validate([
-			'name' => 'required|min:3|max:40',
-			'bio' => 'nullable|min:3|max:250',
-			'image' => 'image'
-		]);
+		$validated = $request->validated();
 
-		if(request()->has('image')) {
-			$imagePath = request()->file('image')->store('profile', 'public');
+		if($request->has('image')) {
+			$imagePath = $request->file('image')->store('profile', 'public');
 			$validated['image'] = $imagePath;
 
 			$user->image && Storage::disk('public')->delete($user->image ?? '');
@@ -49,7 +46,6 @@ class UserController extends Controller
 		$user->update($validated);
 
 		return redirect()->route('profile');
-
 	}
 
 	public function follow(string $id) {
