@@ -40,6 +40,11 @@ class AuthController extends Controller
 	}
 
 	public function register() {
+
+		if(Auth::user()) {
+			return redirect()->route('dashboard');
+		}
+
 		return view('auth.register');
 	}
 
