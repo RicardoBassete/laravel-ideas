@@ -63,7 +63,9 @@
       </div>
     </div>
 
-		@include('ideas.shared.comments-box')
+		@if ( !Route::is('ideas.edit') )
+			@include('ideas.shared.comments-box')
+		@endif
 
   </div>
 </div>
