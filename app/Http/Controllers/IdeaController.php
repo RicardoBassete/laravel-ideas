@@ -23,7 +23,7 @@ class IdeaController extends Controller
 
 	public function destroy($id) {
 		$idea = Idea::findOrFail($id);
-		$this->authorize('idea.delete', $idea);
+		$this->authorize('delete', $idea);
 
 		$idea->delete();
 
@@ -38,14 +38,14 @@ class IdeaController extends Controller
 
 	public function edit($id) {
 		$idea = Idea::find($id);
-		$this->authorize('idea.edit', $idea);
+		$this->authorize('update', $idea);
 
 		return view('ideas.show', compact('idea'));
 	}
 
 	public function update($id) {
 		$idea = Idea::find($id);
-		$this->authorize('idea.edit', $idea);
+		$this->authorize('update', $idea);
 
 		$validated = request()->validate([
 			'content' => 'required|min:3|max:240'

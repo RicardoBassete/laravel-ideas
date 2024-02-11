@@ -17,13 +17,13 @@
             <a class="btn btn-success btn-sm" href="{{ route('ideas.show', [$idea->id]) }}">View</a>
           @endif
 
-					@can('idea.edit', $idea)
+					@can('update', $idea)
 						@if (!Route::is('ideas.edit'))
 							<a class="btn btn-info btn-sm" href="{{ route('ideas.edit', [$idea->id]) }}">Edit</a>
 						@endif
 					@endcan
 
-					@can('idea.delete', $idea)
+					@can('delete', $idea)
 						<button class="btn btn-danger btn-sm"> Delete </button>
 					@endcan
 
