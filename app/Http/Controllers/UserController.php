@@ -21,18 +21,18 @@ class UserController extends Controller
 	}
 
 	public function edit(string $id) {
-		if(Auth::user()->id == $id) {
-			$user = User::find($id);
-			$ideas = $user->ideas()->paginate(5);
+		$user = User::find($id);
+		$this->authorize('update', $user);
 
-			return view('users.edit', compact('user', 'ideas'));
-		} else {
-			return redirect()->route('dashboard');
-		}
+		$ideas = $user->ideas()->paginate(5);
+
+		return view('users.edit', compact('user', 'ideas'));
 	}
 
 	public function update(string $id) {
 		$user = User::find($id);
+		$this->authorize('update', $user);
+
 		$validated = request()->validate([
 			'name' => 'required|min:3|max:40',
 			'bio' => 'nullable|min:3|max:250',
