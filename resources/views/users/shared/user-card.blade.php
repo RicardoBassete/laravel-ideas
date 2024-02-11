@@ -10,13 +10,11 @@
         </div>
       </div>
 			<div class="d-flex flex-column align-items-end h-100">
-				@auth
-					@if(Auth::id() === $user->id)
-						<div>
-							<a class="btn btn-info btn-sm" href="{{route('users.edit', $user->id)}}">Edit</a>
-						</div>
-					@endif
-				@endauth
+				@can('update', $user)
+					<div>
+						<a class="btn btn-info btn-sm" href="{{route('users.edit', $user->id)}}">Edit</a>
+					</div>
+				@endcan
 			</div>
     </div>
     <div class="px-2 mt-4">
