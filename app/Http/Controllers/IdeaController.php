@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateIdeaRequest;
+use App\Http\Requests\UpdateIdeaRequest;
 use App\Models\Idea;
 use Auth;
-use Illuminate\Http\Request;
 
 class IdeaController extends Controller
 {
-  public function store(Request $request) {
+  public function store(CreateIdeaRequest $request) {
 
-		$validated = $request->validate([
-			'content' => 'required|min:3|max:240'
-		]);
+		$validated = $request->validated();
 
 		$validated['user_id'] = Auth::user()->id;
 
@@ -43,13 +42,11 @@ class IdeaController extends Controller
 		return view('ideas.show', compact('idea'));
 	}
 
-	public function update($id) {
+	public function update($id, UpdateIdeaRequest $request) {
 		$idea = Idea::find($id);
 		$this->authorize('update', $idea);
 
-		$validated = request()->validate([
-			'content' => 'required|min:3|max:240'
-		]);
+		$validated = $request->validated();
 
 		$idea->update($validated);
 
