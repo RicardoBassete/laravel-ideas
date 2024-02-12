@@ -1,5 +1,10 @@
 @extends('layout.layout')
 
+@section('title')
+	{{ Route::is('dashboard') ? 'Dashboard' : '' }}
+	{{ Route::is('feed') ? 'Feed' : '' }}
+@endsection
+
 @section('content')
   <div class="row">
 
