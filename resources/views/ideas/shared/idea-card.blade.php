@@ -14,17 +14,17 @@
         <form action="{{ route('ideas.destroy', ['id' => $idea->id]) }}" method="POST">
 
           @if (!Route::is('ideas.show'))
-            <a class="btn btn-success btn-sm" href="{{ route('ideas.show', [$idea->id]) }}">View</a>
+            <a class="btn btn-success btn-sm" href="{{ route('ideas.show', [$idea->id]) }}">@lang('idea_card.view')</a>
           @endif
 
 					@can('update', $idea)
 						@if (!Route::is('ideas.edit'))
-							<a class="btn btn-info btn-sm" href="{{ route('ideas.edit', [$idea->id]) }}">Edit</a>
+							<a class="btn btn-info btn-sm" href="{{ route('ideas.edit', [$idea->id]) }}">@lang('idea_card.edit')</a>
 						@endif
 					@endcan
 
 					@can('delete', $idea)
-						<button class="btn btn-danger btn-sm"> Delete </button>
+						<button class="btn btn-danger btn-sm"> @lang('idea_card.delete') </button>
 					@endcan
 
           @method('delete')

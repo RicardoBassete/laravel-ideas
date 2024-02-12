@@ -4,20 +4,23 @@
       <ul class="nav nav-link-secondary flex-column fw-bold gap-2">
         <li class="nav-item">
           <a class="nav-link {{ Route::is('dashboard') ? 'text-white bg-primary rounded' : '' }}" href="{{ route('dashboard') }}">
-            <span>Home</span></a>
+            <span>@lang('main_links.home')</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link {{ Route::is('feed') ? 'text-white bg-primary rounded' : '' }}" href="{{ route('feed') }}">
-            <span>Feed</span></a>
+            <span>@lang('main_links.feed')</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link {{ Route::is('terms') ? 'text-white bg-primary rounded' : '' }}" href="{{ route('terms') }}">
-            <span>Terms</span></a>
+            <span>
+							@lang('main_links.terms')
+						</span>
+					</a>
         </li>
       </ul>
     </div>
     <div class="card-footer text-center py-2">
-      <a class="btn btn-link btn-sm" href="{{ route('profile') }}">View Profile </a>
+      <a class="btn btn-link btn-sm" href="{{ route('profile') }}"> @lang('main_links.view_profile') </a>
     </div>
   </div>
 </div>

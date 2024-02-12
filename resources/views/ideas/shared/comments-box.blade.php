@@ -10,7 +10,7 @@
 
     </div>
     <div>
-      <button class="btn btn-primary btn-sm"> Post Comment </button>
+      <button class="btn btn-primary btn-sm"> @lang('comments.post_comment') </button>
     </div>
   </form>
   @foreach ($idea->comments as $comment)

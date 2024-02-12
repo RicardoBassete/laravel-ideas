@@ -1,5 +1,5 @@
 @auth
-  <h4> Share yours ideas </h4>
+  <h4> @lang('ideas.share_ideas') </h4>
   <div class="row">
     <form action="{{ route('ideas.store') }}" method="post">
       <div class="mb-3">
@@ -9,12 +9,12 @@
         @enderror
       </div>
       <div class="">
-        <button type="submit" class="btn btn-dark"> Share </button>
+        <button type="submit" class="btn btn-dark"> @lang('ideas.share') </button>
       </div>
       @csrf
     </form>
   </div>
 @endauth
 @guest
-	<h4>Login Share your ideas</h4>
+  <h4> @lang('ideas.login_to_share') </h4>
 @endguest

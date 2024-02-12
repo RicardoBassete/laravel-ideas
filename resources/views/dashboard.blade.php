@@ -22,7 +22,7 @@
 					@include('ideas.shared.idea-card')
 				</div>
 			@empty
-				<p class="text-center mt-4">No Results Found.</p>
+				<p class="text-center mt-4"> @lang('dashboard.no_results') </p>
 			@endforelse
 
 			<div class="mt-3">
