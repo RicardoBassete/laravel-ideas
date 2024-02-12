@@ -14,6 +14,10 @@ class Idea extends Model
 			'user_id',
 		];
 
+		protected $withCount = [
+			'likes'
+		];
+
 		protected $with = [
 			'user',
 			'comments.user'
