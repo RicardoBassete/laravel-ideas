@@ -5,7 +5,7 @@
 @section('content')
   <div class="row">
 
-		<h1>Admin Pannel</h1>
+		<h1>@lang('admin.title')</h1>
 
   </div>
 @endsection
