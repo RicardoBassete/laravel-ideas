@@ -21,8 +21,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 											[DashboardController::class, 'index']	)->name('dashboard');
 
-Route::get('/terms', 									function(){ return view('terms'); }		)->name('terms');
-
 Route::get('/feed', 									FeedController::class									)->name('feed')->middleware('auth');
 
 Route::get('/ideas/{id}', 						[IdeaController::class, 'show']				)->name('ideas.show');
@@ -44,3 +42,11 @@ Route::delete('/users/{id}/unfollow',	[UserController::class, 'unfollow']		)->na
 
 Route::post('/ideas/{id}/like',				[IdeaLikeController::class, 'like']		)->name('ideas.like')->middleware('auth');
 Route::delete('/ideas/{id}/unlike',		[IdeaLikeController::class, 'unlike']	)->name('ideas.unlike')->middleware('auth');
+
+Route::get('/lang/{lang}',function(string $lang){
+	App::setLocale($lang);
+	Session::put('locale', $lang);
+	return redirect()->back();
+})->name('lang');
+
+Route::get('/terms', 									function(){ return view('terms'); }		)->name('terms');

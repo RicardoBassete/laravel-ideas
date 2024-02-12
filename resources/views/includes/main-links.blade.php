@@ -20,7 +20,8 @@
       </ul>
     </div>
     <div class="card-footer text-center py-2">
-      <a class="btn btn-link btn-sm" href="{{ route('profile') }}"> @lang('main_links.view_profile') </a>
+      <a class="btn btn-link btn-sm text-decoration-underline" href="{{ route('lang', 'en') }}"> en </a>
+      <a class="btn btn-link btn-sm text-decoration-underline" href="{{ route('lang', 'pt_BR') }}"> pt-br </a>
     </div>
   </div>
 </div>
