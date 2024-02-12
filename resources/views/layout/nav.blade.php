@@ -12,11 +12,14 @@
       <ul class="navbar-nav">
         @guest
           <li class="nav-item">
-            <a class="nav-link {{ Route::is('login') ? 'active' : '' }}" aria-current="page"
-              href="{{ route('login') }}">Login</a>
+            <a class="nav-link {{ Route::is('login') ? 'active' : '' }}" aria-current="page"href="{{ route('login') }}">
+							Login
+						</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ Route::is('register') ? 'active' : '' }}" href="{{ route('register') }}">Register</a>
+            <a class="nav-link {{ Route::is('register') ? 'active' : '' }}" href="{{ route('register') }}">
+							@lang('nav.register')
+						</a>
           </li>
         @endguest
         @auth
@@ -33,7 +36,7 @@
           <li class="nav-item">
 						<form action="{{route('login.logout')}}" method="POST">
 							@csrf
-							<button class="btn btn-danger btn-sm" type="submit">Logout</button>
+							<button class="btn btn-danger btn-sm" type="submit">@lang('nav.logout')</button>
 						</form>
           </li>
         @endauth
