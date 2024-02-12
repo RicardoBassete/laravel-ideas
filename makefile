@@ -1,3 +1,5 @@
+LANGUAGES = en pt_BR
+
 run: install
 	php artisan serve
 
@@ -21,8 +23,8 @@ ide-helper: vendor
 	php artisan ide-helper:models -N
 
 translation-files:
-	echo "<?php \n\nreturn [\n\t'' => ''\n];" > ./lang/en/$(name).php
-	echo "<?php \n\nreturn [\n\t'' => ''\n];" > ./lang/pt_BR/$(name).php
+	@for dir in $(LANGUAGES); do echo "<?php \n\nreturn [\n\t'' => ''\n];" > ./lang/$$dir/$(name).php; done
+	@for dir in $(LANGUAGES); do echo "Criando arquivo ./lang/$$dir/$(name).php"; done
 
 clear:
 	rm -rf node_modules vendor
