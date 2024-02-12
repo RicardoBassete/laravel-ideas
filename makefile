@@ -20,5 +20,9 @@ ide-helper: vendor
 	php artisan ide-helper:generate
 	php artisan ide-helper:models -N
 
+translation-files:
+	echo "<?php \n\nreturn [\n\t'' => ''\n];" > ./lang/en/$(name).php
+	echo "<?php \n\nreturn [\n\t'' => ''\n];" > ./lang/pt_BR/$(name).php
+
 clear:
 	rm -rf node_modules vendor
