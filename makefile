@@ -7,7 +7,7 @@ node_modules: package.json
 	rm -rf node_modules
 	npm install
 
-vendor: composer.json
+vendor: composer.json composer.lock
 	rm -rf vendor
 	composer install
 
