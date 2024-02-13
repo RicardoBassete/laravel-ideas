@@ -33,7 +33,7 @@
 							{{ Auth::user()->name }}
 						</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item d-flex flex-column justify-content-center">
 						<form action="{{route('login.logout')}}" method="POST">
 							@csrf
 							<button class="btn btn-danger btn-sm" type="submit">@lang('nav.logout')</button>
