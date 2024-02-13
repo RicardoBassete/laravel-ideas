@@ -21,7 +21,7 @@
 
 			@include('includes.search-bar')
 
-      @include('includes.who-to-follow')
+      @include('includes.follow-box')
 
     </div>
   </div>
