@@ -20,7 +20,7 @@ class FeedController extends Controller
 		$search = $request->query('search');
 
 		if($search) {
-			$ideas = $ideas->where('content', 'like', "%$search%");
+			$ideas = $ideas->search($search);
 		}
 
 		return view('dashboard', [
