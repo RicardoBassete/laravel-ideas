@@ -28,6 +28,6 @@ class DashboardController extends Controller
 		$currentTheme = Theme::first();
 		$currentTheme->theme = $request->get('theme');
 		$currentTheme->save();
-		return redirect()->route('admin.dashboard');
+		return redirect()->route('admin.theme');
 	}
 }
