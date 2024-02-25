@@ -10,6 +10,7 @@
 
 		@include('admin.shared.main')
 		@include('admin.shared.theme-selector')
+		@include('admin.users.index')
 
   </div>
 @endsection
