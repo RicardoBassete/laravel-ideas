@@ -27,4 +27,4 @@ translation-files:
 	@for dir in $(LANGUAGES); do echo "Criando arquivo ./lang/$$dir/$(name).php"; done
 
 clear:
-	@rm -rf node_modules vendor
+	@rm -rf node_modules vendor _ide_helper*.php
