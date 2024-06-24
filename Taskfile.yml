@@ -2,9 +2,6 @@
 
 version: '3'
 
-vars:
-  LANGUAGES: en pt_BR
-
 tasks:
   default:
     deps: [run]
