@@ -6,6 +6,8 @@ vars:
   LANGUAGES: en pt_BR
 
 tasks:
+  default:
+    deps: [run]
 
   run:
     desc: Start the php server
