@@ -1,0 +1,63 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  LANGUAGES: en pt_BR
+
+tasks:
+
+  run:
+    desc: Start the php server
+    deps: [install, .env]
+    cmds:
+      - php artisan serve
+
+  install:
+    desc: Install all dependencies
+    cmds:
+      - task: node_modules
+      - task: vendor
+
+  .env:
+    desc: Creates the .env file if does not exist
+    deps: [vendor]
+    status:
+      - test -f .env # only runs if .env does not exist
+    cmds:
+      - cp .env.example .env
+      - php artisan key:generate --ansi
+
+  ide-helper:
+    desc: Creates the _ide_helper.php and _ide_helper_models.php files
+    deps: [vendor]
+    cmds:
+      - php artisan ide-helper:generate
+      - php artisan ide-helper:models -N
+
+  vendor:
+    desc: Install PHP dependencies
+    sources:
+      - ./composer.json
+      - ./composer.lock
+    generates:
+      - ./vendor/autoload.php
+    cmds:
+      - rm -rf vendor
+      - composer install
+
+  node_modules:
+    desc: Install NPM dependencies
+    sources:
+      - ./package.json
+      - ./package-lock.json
+    generates:
+      - ./node_modules/.package-lock.json
+    cmds:
+      - rm -rf node_modules
+      - npm install
+
+  clear:
+    desc: Remove the node_modules and vendor directories, as well as the "ide_helper" files
+    cmds:
+      - rm -rf node_modules vendor _ide_helper*.php
