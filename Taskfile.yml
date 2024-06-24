@@ -11,18 +11,22 @@ tasks:
 
   run:
     desc: Start the php server
-    deps: [install, .env]
+    silent: true
     cmds:
+      - task: install
+      - task: .env
       - php artisan serve
 
   install:
     desc: Install all dependencies
+    silent: true
     cmds:
       - task: node_modules
       - task: vendor
 
   .env:
     desc: Creates the .env file if does not exist
+    silent: true
     deps: [vendor]
     status:
       - test -f .env # only runs if .env does not exist
@@ -32,6 +36,7 @@ tasks:
 
   ide-helper:
     desc: Creates the _ide_helper.php and _ide_helper_models.php files
+    silent: true
     deps: [vendor]
     cmds:
       - php artisan ide-helper:generate
@@ -39,6 +44,7 @@ tasks:
 
   vendor:
     desc: Install PHP dependencies
+    silent: true
     sources:
       - ./composer.json
       - ./composer.lock
@@ -50,6 +56,7 @@ tasks:
 
   node_modules:
     desc: Install NPM dependencies
+    silent: true
     sources:
       - ./package.json
       - ./package-lock.json
@@ -60,6 +67,7 @@ tasks:
       - npm install
 
   clear:
-    desc: Remove the node_modules and vendor directories, as well as the "ide_helper" files
+    desc: Remove node_modules, vendor and .task directories and "ide_helper" files
+    silent: true
     cmds:
       - rm -rf node_modules vendor _ide_helper*.php
