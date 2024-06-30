@@ -13,6 +13,7 @@ tasks:
     cmds:
       - task: install
       - task: .env
+      - task: build
       - php artisan serve
 
   # Generate files tasks
@@ -33,6 +34,19 @@ tasks:
     cmds:
       - php artisan ide-helper:generate
       - php artisan ide-helper:models -N
+
+  # Build tasks
+  build:
+    desc: Build assets with vite
+    deps: [node_modules]
+    silent: true
+    sources:
+      - resources/js/*.js
+      - resources/css/*.css
+    generates:
+      - public/build/manifest.json
+    cmds:
+      - npm run build
 
   # Install deps tasks
   install:
