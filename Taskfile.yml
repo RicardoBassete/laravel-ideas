@@ -53,6 +53,7 @@ tasks:
     sources:
       - resources/js/*.js
       - resources/css/*.css
+      - node_modules/.package-lock.json # Rebuild if deps change
     generates:
       - public/build/manifest.json
     cmds:
