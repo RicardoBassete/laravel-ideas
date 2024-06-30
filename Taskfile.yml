@@ -12,7 +12,6 @@ tasks:
     silent: true
     cmds:
       - task: install
-      - task: .env
       - task: build
       - task: storage-link
       - php artisan serve
@@ -21,12 +20,10 @@ tasks:
   .env:
     desc: Creates the .env file if does not exist
     silent: true
-    deps: [vendor]
     status:
       - test -f .env # only runs if .env does not exist
     cmds:
       - cp .env.example .env
-      - php artisan key:generate --ansi
 
   ide-helper:
     desc: Creates the _ide_helper.php and _ide_helper_models.php files
@@ -70,6 +67,7 @@ tasks:
   vendor:
     desc: Install PHP dependencies
     silent: true
+    deps: [.env]
     sources:
       - ./composer.json
       - ./composer.lock
