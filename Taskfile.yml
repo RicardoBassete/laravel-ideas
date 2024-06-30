@@ -92,7 +92,10 @@ tasks:
 
   # Other tasks
   clear:
-    desc: Remove node_modules, vendor and .task directories and "ide_helper" files
+    desc: Removes the node_modules, vendor and public/build directories, also the "ide_helper" files
     silent: true
     cmds:
-      - rm -rf node_modules vendor _ide_helper*.php
+      - rm -rf node_modules
+      - rm -rf vendor
+      - rm -rf _ide_helper*.php
+      - rm -rf public/build
