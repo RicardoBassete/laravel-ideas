@@ -14,6 +14,7 @@ tasks:
       - task: install
       - task: .env
       - task: build
+      - task: storage-link
       - php artisan serve
 
   # Generate files tasks
@@ -34,6 +35,15 @@ tasks:
     cmds:
       - php artisan ide-helper:generate
       - php artisan ide-helper:models -N
+
+  storage-link:
+    desc: Creates symlink "public/storage" -> "storage/app/public"
+    silent: true
+    deps: [vendor]
+    status:
+      - test -h public/storage # only runs if "public/storage" does not exist
+    cmds:
+      - php artisan storage:link
 
   # Build tasks
   build:
