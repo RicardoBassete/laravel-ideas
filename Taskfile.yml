@@ -3,6 +3,7 @@
 version: '3'
 
 tasks:
+  # main tasks
   default:
     deps: [run]
 
@@ -14,13 +15,7 @@ tasks:
       - task: .env
       - php artisan serve
 
-  install:
-    desc: Install all dependencies
-    silent: true
-    cmds:
-      - task: node_modules
-      - task: vendor
-
+  # Generate files tasks
   .env:
     desc: Creates the .env file if does not exist
     silent: true
@@ -38,6 +33,14 @@ tasks:
     cmds:
       - php artisan ide-helper:generate
       - php artisan ide-helper:models -N
+
+  # Install deps tasks
+  install:
+    desc: Install all dependencies
+    silent: true
+    cmds:
+      - task: node_modules
+      - task: vendor
 
   vendor:
     desc: Install PHP dependencies
@@ -63,6 +66,7 @@ tasks:
       - rm -rf node_modules
       - npm install
 
+  # Other tasks
   clear:
     desc: Remove node_modules, vendor and .task directories and "ide_helper" files
     silent: true
