@@ -27,16 +27,16 @@ tasks:
 
   ide-helper:
     desc: Creates the _ide_helper.php and _ide_helper_models.php files
-    silent: true
     deps: [vendor]
+    silent: true
     cmds:
       - php artisan ide-helper:generate
       - php artisan ide-helper:models -N
 
   storage-link:
     desc: Creates symlink "public/storage" -> "storage/app/public"
-    silent: true
     deps: [vendor]
+    silent: true
     status:
       - test -h public/storage # only runs if "public/storage" does not exist
     cmds:
@@ -66,8 +66,8 @@ tasks:
 
   vendor:
     desc: Install PHP dependencies
-    silent: true
     deps: [.env]
+    silent: true
     sources:
       - ./composer.json
       - ./composer.lock
