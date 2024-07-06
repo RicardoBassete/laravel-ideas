@@ -90,7 +90,7 @@ tasks:
       - npm install
 
   # Other tasks
-  clear:
+  clean:
     desc: Removes the node_modules, vendor and public/build directories, also the "ide_helper" files
     silent: true
     cmds:
