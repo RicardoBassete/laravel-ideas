@@ -16,7 +16,7 @@ tasks:
       - task: storage-link
       - php artisan serve
 
-  # Generate files tasks
+  # Generate files
   .env:
     desc: Creates the .env file if does not exist
     silent: true
@@ -42,7 +42,7 @@ tasks:
     cmds:
       - php artisan storage:link
 
-  # Build tasks
+  # Build
   build:
     desc: Build assets with vite
     deps: [node_modules]
@@ -56,7 +56,7 @@ tasks:
     cmds:
       - npm run build
 
-  # Install deps tasks
+  # Install dependencies
   install:
     desc: Install all dependencies
     silent: true
