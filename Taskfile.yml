@@ -11,10 +11,16 @@ tasks:
     desc: Start the php server
     silent: true
     cmds:
+      - task: setup
+      - php artisan serve
+
+  setup:
+    desc: Install dependencies, create storage link and build js and css assets
+    silent: true
+    cmds:
       - task: install
       - task: build
       - task: storage-link
-      - php artisan serve
 
   # Generate files
   .env:
